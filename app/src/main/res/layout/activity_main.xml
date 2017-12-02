@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MatchMatch.Vertical"
+    android:layout_width="match_parent"
+    android:background="#FFFFFF"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/inc_toolbar" />
+    <ScrollView style="@style/MatchMatch">
+
+        <LinearLayout style="@style/MatchMatch.Vertical">
+
+            <Button
+                android:id="@+id/button1"
+                style="@style/DemoBtn"
+                android:text="测试滑动返回" />
+
+            <Button
+                style="@style/DemoBtn"
+                android:id="@+id/button2"
+                android:text="测试滑动删除" />
+
+            <Button
+                style="@style/DemoBtn"
+                android:id="@+id/button3"
+                android:text="TestTranslucent" />
+
+            <Button
+                style="@style/DemoBtn"
+                android:id="@+id/button4"
+                android:text="测试下拉刷新和 WebView" />
+
+            <Button
+                style="@style/DemoBtn"
+                android:id="@+id/button5"
+                android:text="测试 RecyclerView" />
+
+            <Button
+                style="@style/DemoBtn"
+                android:id="@+id/button6"
+                android:text="测试 EditText 位于底部的情况" />
+
+            <Button
+                style="@style/DemoBtn"
+                android:id="@+id/button7"
+                android:text="测试底部导航条是否悬浮在内容上" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
