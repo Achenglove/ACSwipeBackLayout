@@ -4,6 +4,6 @@
 ## 基本使用
 ```java
 dependencies {
-	        compile 'com.github.Achenglove:ACSwipeBackLayout:v1.0.1'
+	        implementation 'com.github.Achenglove:ACSwipeBackLayout:v1.0.1'
 	}
 ```
