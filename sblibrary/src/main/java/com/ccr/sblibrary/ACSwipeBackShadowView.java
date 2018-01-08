@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import java.lang.ref.WeakReference;
 
@@ -160,8 +162,30 @@ class ACSwipeBackShadowView extends FrameLayout {
             }
 
             removeView(mPreContentView);
-            mPreDecorView.addView(mPreContentView, 0);
 
+            //===================处理滑动退出后布局下滑问题==================
+            ViewGroup.LayoutParams lp = null;
+            if (!(mPreContentView instanceof ACSwipeBackLayout)) {
+                int width = mPreDecorView.getWidth();
+                int height = mPreDecorView.getHeight() - ACUIUtil.getNavigationBarHeight(activity);
+                if (!ACUIUtil.isPortrait(activity)) {
+                    width = mPreDecorView.getWidth() - ACUIUtil.getNavigationBarHeight(activity);
+                    height = mPreDecorView.getHeight();
+                }
+                if (mPreDecorView instanceof FrameLayout) {
+                    lp = new FrameLayout.LayoutParams(width, height);
+                } else if (mPreDecorView instanceof LinearLayout) {
+                    lp = new LinearLayout.LayoutParams(width, height);
+                } else if (mPreDecorView instanceof RelativeLayout) {
+                    lp = new RelativeLayout.LayoutParams(width, height);
+                }
+            }
+            if (lp == null) {
+                mPreDecorView.addView(mPreContentView, 0);
+            } else {
+                mPreDecorView.addView(mPreContentView, 0, lp);
+            }
+            //===================处理滑动退出后布局下滑问题==================
             mPreContentView = null;
             mPreActivity.clear();
             mPreActivity = null;
